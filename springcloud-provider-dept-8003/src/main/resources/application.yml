@@ -1,0 +1,33 @@
+server:
+  port: 8003
+
+# mybatis配置
+mybatis:
+  type-aliases-package: com.kuang.springcloud.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+# Spring配置
+spring:
+  application:
+    name: springcloud-provider-dept
+  datasource: # 数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/DB03?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: MyNewPass@123
+
+#Eureka配置，把服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/  # 注册到如下地址
+  instance:
+    instance-id: springcloud-provider-dept-8003   # 修改状态默认描述信息
+    prefer-ip-address: true  # 显示服务的ip地址
+
+#info配置
+info:
+  app.name: xhp
+  company.name: com.kuang

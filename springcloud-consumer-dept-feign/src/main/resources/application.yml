@@ -1,0 +1,16 @@
+server:
+  port: 80  # 80是http的默认端口号
+
+# Eureka配置
+eureka:
+  client:
+    register-with-eureka: false #不用向其他注册中心进行注册
+    service-url:
+      # 三个注册中心的地址
+      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+
+
+# 开启Hystrix服务降级
+feign:
+  hystrix:
+    enabled: true

@@ -1,0 +1,26 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: springcloud-zuul
+
+# Eureka配置，把服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/  # 注册到如下地址
+  instance:
+    instance-id: zuul-9527   # 修改状态默认描述信息
+    prefer-ip-address: true  # 显示服务的ip地址
+
+# info配置
+info:
+  app.name: xhp
+  company.name: com.kuang
+
+# Zuul配置
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept
+    mydept.path: /mydept/**
